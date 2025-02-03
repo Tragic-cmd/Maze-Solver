@@ -1,4 +1,5 @@
 from tkinter import Tk, BOTH, Canvas
+from constants import LINE_COLOR
 
 class Window:
     def __init__(self, width, height):
@@ -22,7 +23,7 @@ class Window:
     def close(self):
         self.__running = False
 
-    def draw_line(self, line, fill_color):
+    def draw_line(self, line, fill_color=LINE_COLOR):
         line.draw(self.__canvas, fill_color)
 
     def draw_rectangle(self, x1, y1, x2, y2, color="white"):
@@ -41,7 +42,7 @@ class Line:
         self.y1 = point1.y
         self.y2 = point2.y
 
-    def draw(self, canvas, fill_color):
+    def draw(self, canvas, fill_color=LINE_COLOR):
         canvas.create_line(
             self.x1, self.y1, self.x2, self.y2, fill=fill_color, width=2
         )
