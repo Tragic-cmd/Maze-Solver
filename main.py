@@ -6,18 +6,27 @@ from maze import Maze
 def main():
     win = Window(SCREEN_WIDTH, SCREEN_HEIGHT)
     
-    # Create a maze with visible cells (not too many to start)
+    # Calculate maze dimensions
+    margin = 50
     num_cols = 12
     num_rows = 10
-    margin = 50
-    cell_size_x = 50
-    cell_size_y = 50
+    cell_size_x = (SCREEN_WIDTH - 2 * margin) // num_cols
+    cell_size_y = (SCREEN_HEIGHT - 2 * margin) // num_rows
     
-    # Create your maze
-    maze = Maze(margin, margin, num_rows, num_cols, cell_size_x, cell_size_y, win)
+    # Create maze with optional seed for debugging
+    maze = Maze(
+        x1=margin,
+        y1=margin,
+        num_rows=num_rows,
+        num_cols=num_cols,
+        cell_size_x=cell_size_x,
+        cell_size_y=cell_size_y,
+        win=win,
+        seed=None  # Set to a number like 0 for debugging
+    )
     
-    # Break entrance and exit
-    maze._break_entrance_and_exit()
+    # Generate the maze
+    maze.generate_maze()
 
     # Wait for the window to close
     win.wait_for_close()
