@@ -1,9 +1,8 @@
 # Maze Solver
 
 This is an automatic maze generator and solver built in python using the tkinker library. 
-## Installation
 
-Describe the steps to install your project. Include prerequisites like software dependencies or any necessary setup prior to running the project.
+## Installation
 
 ```bash
 # Clone the repository
