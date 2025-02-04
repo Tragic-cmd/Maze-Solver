@@ -1,7 +1,7 @@
 from window import Line, Point
 
 class Cell:
-    def __init__(self, x1, y1, x2, y2, win):
+    def __init__(self, x1, y1, x2, y2, win=None):
         self.has_left_wall = True
         self.has_right_wall = True
         self.has_top_wall = True
@@ -13,26 +13,51 @@ class Cell:
         self._win = win
 
     def draw(self):
-        if self.has_left_wall:
-            point1 = Point(self._x1, self._y1)
-            point2 = Point(self._x1, self._y2)
-            line = Line(point1, point2)
-            self._win.draw_line(line)
-        if self.has_right_wall:
-            point1 = Point(self._x2, self._y1)
-            point2 = Point(self._x2, self._y2)
-            line = Line(point1, point2)
-            self._win.draw_line(line)
-        if self.has_top_wall:
-            point1 = Point(self._x1, self._y1)
-            point2 = Point(self._x2, self._y1)
-            line = Line(point1, point2)
-            self._win.draw_line(line)
-        if self.has_bottom_wall:
-            point1 = Point(self._x1, self._y2)
-            point2 = Point(self._x2, self._y2)
-            line = Line(point1, point2)
-            self._win.draw_line(line)        
+        if self._win:
+            if self.has_left_wall:
+                point1 = Point(self._x1, self._y1)
+                point2 = Point(self._x1, self._y2)
+                line = Line(point1, point2)
+                self._win.draw_line(line, "black")
+            else:
+                # Draw a "removed" wall in background color
+                point1 = Point(self._x1, self._y1)
+                point2 = Point(self._x1, self._y2)
+                line = Line(point1, point2)
+                self._win.draw_line(line, "#d9d9d9")
+            if self.has_right_wall:
+                point1 = Point(self._x2, self._y1)
+                point2 = Point(self._x2, self._y2)
+                line = Line(point1, point2)
+                self._win.draw_line(line, "black")
+            else:
+                # Draw a "removed" wall in background color
+                point1 = Point(self._x2, self._y1)
+                point2 = Point(self._x2, self._y2)
+                line = Line(point1, point2)
+                self._win.draw_line(line, "#d9d9d9")
+            if self.has_top_wall:
+                point1 = Point(self._x1, self._y1)
+                point2 = Point(self._x2, self._y1)
+                line = Line(point1, point2)
+                self._win.draw_line(line, "black")
+            else:
+                # Draw a "removed" wall in background color
+                point1 = Point(self._x1, self._y1)
+                point2 = Point(self._x2, self._y1)
+                line = Line(point1, point2)
+                self._win.draw_line(line, "#d9d9d9")
+            if self.has_bottom_wall:
+                point1 = Point(self._x1, self._y2)
+                point2 = Point(self._x2, self._y2)
+                line = Line(point1, point2)
+                self._win.draw_line(line, "black")
+            else:
+                # Draw a "removed" wall in background color
+                point1 = Point(self._x1, self._y2)
+                point2 = Point(self._x2, self._y2)
+                line = Line(point1, point2)
+                self._win.draw_line(line, "#d9d9d9")        
 
     def draw_move(self, to_cell, undo=False):
         self_x1 = (self._x1 + self._x2) / 2
