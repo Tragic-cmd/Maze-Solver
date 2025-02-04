@@ -24,7 +24,7 @@ tkinker
 python3 main.py
 ```
 
-You can customize the maze or the size of the screen by editing the contents of main.py and constants.py.
+You can customize the maze or the size of the GUI by editing the contents of main.py and constants.py.
 
 ## Features
 
